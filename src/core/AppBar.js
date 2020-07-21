@@ -198,6 +198,9 @@ const MyAppBar = (props) => {
           {/* <Button color="inherit"  className={classes.title} onClick={() => history.push("/shop")}>Shop</Button> */}
           <Typography style={{ cursor: 'pointer' }} variant="h6" color="inherit" onClick={() => history.push("/shop")} className={classes.title}>Shop</Typography>
           {/* <Button color="inherit">Login</Button> */}
+          <Badge badgeContent={itemTotal() && itemTotal()} color="secondary" >
+            <ShoppingCartIcon style={{ cursor: 'pointer' }} onClick={() => history.push("/cart")} />
+          </Badge>
           {isAuthenticated() &&
             <IconButton
 
