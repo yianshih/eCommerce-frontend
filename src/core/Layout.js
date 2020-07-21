@@ -1,6 +1,7 @@
 import React from "react";
 import Menu from "./Menu";
 import AppBar from '../core/AppBar'
+import TestBar from '../core/TestBar'
 import "../styles.css";
 
 const Layout = ({
@@ -12,6 +13,7 @@ const Layout = ({
         <div>
             {/* <Menu /> */}
             <AppBar />
+            {/* <TestBar /> */}
             <div
                 //style={{ marginTop: '60px' }}
                 className="jumbotron">

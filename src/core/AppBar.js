@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     //display: 'flex',
     flexGrow: 1
   },
+  title: {
+    flexGrow: 1
+  },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
@@ -187,47 +190,26 @@ const MyAppBar = (props) => {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="static"
-        className={
-          clsx(classes.appBar, { [classes.appBarShift]: open, })
-        }
-      >
+      <AppBar position="static">
         <Toolbar>
-          <Grid container justify="space-between" alignItems="center">
-            <Grid item>
-              <Grid container justify="center" alignItems="center" spacing={10}>
-                {/* <Grid item>
-                  <DrawerButton />
-                </Grid> */}
-                <Grid item>
-                  <Typography style={{ cursor: 'pointer' }} onClick={() => history.push("/")} variant="subtitle1">Home</Typography>
-                </Grid>
-                <Grid item>
-                  <Typography style={{ cursor: 'pointer' }} onClick={() => history.push("/shop")} variant="subtitle1">Shop</Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item>
-              <IconButton aria-label="showCart" color="inherit" onClick={() => history.push("/cart")}>
-                <Badge badgeContent={itemTotal() && itemTotal()} color="secondary">
-                  <ShoppingCartIcon />
-                </Badge>
-              </IconButton>
-            </Grid>
-          </Grid>
+          <IconButton edge="start" onClick={() => history.push("/")} className={classes.menuButton} color="inherit" aria-label="menu">
+            <Typography variant="h6" className={classes.title}>E-Commerce</Typography>
+          </IconButton>
+          {/* <Button color="inherit"  className={classes.title} onClick={() => history.push("/shop")}>Shop</Button> */}
+          <Typography style={{ cursor: 'pointer' }} variant="h6" color="inherit" onClick={() => history.push("/shop")} className={classes.title}>Shop</Typography>
+          {/* <Button color="inherit">Login</Button> */}
           {isAuthenticated() &&
             <IconButton
-              edge="end"
+
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit">
               <AccountCircle />
-            </IconButton>}
-          {!isAuthenticated() &&
-            <div style={{ marginLeft: '10px' }}><Button color="inherit" onClick={() => history.push("/signin")}>Login</Button></div>}
+            </IconButton>
+          }
+          {!isAuthenticated() && <Button color="inherit" onClick={() => history.push("/signin")}>Login</Button>}
 
         </Toolbar>
       </AppBar>

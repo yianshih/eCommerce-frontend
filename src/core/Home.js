@@ -44,19 +44,25 @@ const Home = () => {
             className="container-fluid"
         >
             <Search />
-            <h2 className="mb-4">New Arrivals</h2>
-            <div className="row justify-content-start">
-                {productsByArrival.map((product, i) => (
-                    <div key={i} className="col-4-auto mb-3" style={{ margin: '20px', maxWidth: '300px' }}>
-                        <Card
-                            product={product}
-                            setRun={setRun}
-                            run={run} />
-                    </div>
-                ))}
+            <div className="row justify-content-center">
+                <h2 className="mb-4">New Arrivals</h2>
             </div>
-            <h2 className="mb-4">Best Sellers</h2>
-            <div className="row">
+            <div className="row justify-content-center">
+                {productsByArrival.map((product, i) => {
+                    if (i < 3) return (
+                        <div key={i} className="col-4-auto mb-3" style={{ margin: '20px', maxWidth: '300px' }}>
+                            <Card
+                                product={product}
+                                setRun={setRun}
+                                run={run} />
+                        </div>)
+                    else return
+                })}
+            </div>
+            <div className="row justify-content-center">
+                <h2 className="mb-4">Best Sellers</h2>
+            </div>
+            <div className="row justify-content-center">
                 {productsBySell.map((product, i) => {
                     if (i < 3) return (<div key={i} className="col-4-auto mb-3" style={{ margin: '20px', maxWidth: '300px' }}>
                         <Card
