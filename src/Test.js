@@ -36,3 +36,22 @@ export default function ButtonAppBar() {
         </div>
     );
 }
+
+
+
+// server {
+//     listen 80 default_server;
+//     server_name _;
+  
+//     #react app & front-end files
+//     location / {
+//         root /var/www/eCommerce-frontend/build;
+//         proxy_pass http://localhost:3000/;
+//         try_files $uri /index.html;
+//     }
+  
+//     #node api reverse proxy
+//     location /api/ {
+//         proxy_pass http://localhost:8000/;
+//     }
+// }

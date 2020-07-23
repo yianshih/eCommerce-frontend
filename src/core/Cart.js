@@ -49,8 +49,8 @@ const Cart = () => {
             <div className="row justify-content-center">
                 {items.length > 0
                     ? <Fragment>
-                        <div className="col-sm-4">{showItems(items)}</div>
-                        <div className="col-sm-6">
+                        <div className="col-sm-6">{showItems(items)}</div>
+                        <div className="col-sm-4">
                             <h2 className="mb-0">Your cart summary</h2>
                             <hr />
                             <Checkout products={items} setRun={setRun} run={run} />

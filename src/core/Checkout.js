@@ -6,6 +6,7 @@ import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
 // import "braintree-web"; // not using this package
 import DropIn from 'braintree-web-drop-in-react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     const [data, setData] = useState({
@@ -145,9 +146,15 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
                         }}
                         onInstance={instance => (data.instance = instance)}
                     />
-                    <button disabled={data.address ? false : true} onClick={buy} className="btn btn-success btn-block">
-                        Pay
-                    </button>
+                    {data.loading && data.loading
+                        ? <div className="row justify-content-center"><CircularProgress /></div>
+                        : <button
+                            disabled={data.address ? false : true}
+                            onClick={buy}
+                            className="btn btn-success btn-block">
+                            Pay
+                            </button>}
+
                 </div>
             ) : null}
         </div>
@@ -165,12 +172,12 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
         </div>
     );
 
-    const showLoading = loading => loading && <h2 className="text-danger">Loading...</h2>;
+    const showLoading = loading => loading && <CircularProgress />;
 
     return (
         <div>
             <h2>Total: ${getTotal()}</h2>
-            {showLoading(data.loading)}
+            {/* {showLoading(data.loading)} */}
             {showSuccess(data.success)}
             {showError(data.error)}
             {showCheckout()}
